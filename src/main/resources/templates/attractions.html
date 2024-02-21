@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="../static/style.css" rel="stylesheet">
     <link th:href="@{/style.css}" rel="stylesheet">
     <title>Attractions</title>
 </head>
 <body>
+<h1>Attractions</h1>
 <table th:if="${attractions.size() > 0}">
-    <h1>Atttactions</h1>
     <thead>
     <tr>
         <td>Name</td>

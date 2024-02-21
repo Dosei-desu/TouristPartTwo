@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link th:href="@{style.css}" rel="stylesheet">
+
 <head>
     <meta charset="UTF-8">
+    <link href="../static/style.css" rel="stylesheet">
+    <link th:href="@{/style.css}" rel="stylesheet">
     <title>Update An Attraction</title>
 </head>
 <body>
@@ -10,20 +12,31 @@
 
 <form th:action="@{/attractions/update}" th:method="POST" th:object="${attraction}">
     <label for="name">Attraction</label>
-    <input readonly id="name" th:field="*{name}">
+    <br>
+    <input readonly id="name" type="text" th:field="*{name}">
+    <br>
+    <br>
     <label for="description">Description</label>
+    <br>
     <input id="description" type="text" th:field="*{description}">
+    <br>
+    <br>
     <label for="locations">Location</label>
+    <br>
     <select id="locations" th:field="*{location}" th:selected="${attraction.location}">
         <option th:each="value : ${locations}"
                 th:value="${value.name}"
                 th:text="${value.name}"/>
     </select>
+    <br>
+    <br>
     <label for="tags">Tags</label>
-    <th:block th:each="value : ${tags}">
+    <div th:each="value : ${tags}">
         <input id="tags" type="checkbox" th:field="*{tags}"
                th:value="${value.name}" th:text="${value.name}">
-    </th:block>
+    </div>
+    <br>
+    <br>
     <button type="submit">Submit Changes</button>
 
 </form>

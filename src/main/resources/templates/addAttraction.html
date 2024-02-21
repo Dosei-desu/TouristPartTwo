@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link th:href="@{style.css}" rel="stylesheet">
+
 <head>
     <meta charset="UTF-8">
+    <link href="../static/style.css" rel="stylesheet">
+    <link th:href="@{/style.css}" rel="stylesheet">
     <title>Add New Attraction</title>
 </head>
 <body>
+<h1>Add Attraction</h1>
+
 <form th:action="@{/attractions/add}" th:method="POST" th:object="${attraction}">
     <label for="name">Attraction</label>
+    <br>
     <input id="name" type="text" th:field="*{name}">
+    <br>
+    <br>
     <label for="description">Description</label>
+    <br>
     <input id="description" type="text" th:field="*{description}">
+    <br>
+    <br>
     <label for="locations">Location</label>
+    <br>
     <select id="locations" th:field="*{location}">
         <option th:each="value : ${locations}"
                 th:value="${value.name}"
                 th:text="${value.name}"/>
     </select>
+    <br>
+    <br>
     <label for="tags">Tags</label>
-    <th:block th:each="value : ${tags}">
+    <div th:each="value : ${tags}">
         <input id="tags" type="checkbox" th:field="*{tags}"
                th:value="${value.name}" th:text="${value.name}">
-    </th:block>
-    <button type="submit">Submit Changes</button>
+    </div>
+    <br>
+    <br>
+    <button type="submit">Create</button>
 
 </form>
 </body>
