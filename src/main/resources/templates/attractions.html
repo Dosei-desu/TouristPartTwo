@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <title>Attractions</title>
+</head>
+<body>
+<table th:if="${attractions.size() > 0}">
+    <h1>Atttactions</h1>
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Location</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attraction : ${attractions}">
+        <td th:text="${attraction.name}"></td>
+        <td th:text="*{attraction.description}"></td>
+        <td th:text="*{attraction.location}"></td>
+        <td><a th:href="@{attractions/{name}/tags(name=${attraction.name})}">Tags</a></td>
+        <td><a th:href="@{attractions/{name}/update(name=${attraction.name})}">Update</a></td>
+        <td><a th:href="@{attractions/{name}/delete(name=${attraction.name})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<p style="color: red" th:unless="${attractions.size() > 0}">No Attractions Available!</p>
+<a th:href="@{attractions/add}">Add New Attraction</a>
+</body>
+</html>

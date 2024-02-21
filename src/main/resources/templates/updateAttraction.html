@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{style.css}" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Update An Attraction</title>
+</head>
+<body>
+<h1>Update Attraction</h1>
+
+<form th:action="@{/attractions/update}" th:method="POST" th:object="${attraction}">
+    <label for="name">Attraction</label>
+    <input readonly id="name" th:field="*{name}">
+    <label for="description">Description</label>
+    <input id="description" type="text" th:field="*{description}">
+    <label for="locations">Location</label>
+    <select id="locations" th:field="*{location}" th:selected="${attraction.location}">
+        <option th:each="value : ${locations}"
+                th:value="${value.name}"
+                th:text="${value.name}"/>
+    </select>
+    <label for="tags">Tags</label>
+    <th:block th:each="value : ${tags}">
+        <input id="tags" type="checkbox" th:field="*{tags}"
+               th:value="${value.name}" th:text="${value.name}">
+    </th:block>
+    <button type="submit">Submit Changes</button>
+
+</form>
+
+</body>
+</html>

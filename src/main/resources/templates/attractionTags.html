@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{style.css}" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <title>Attraction Tags</title>
+</head>
+<body>
+<table th:if="${attractionTags.size() > 0}">
+    <thead>
+    <tr>
+        <td th:text="${name + ' Tags'}"/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tag : ${attractionTags}">
+        <td th:text="${tag}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="http://localhost:8080/attractions">Return</a>
+</body>
+</html>
