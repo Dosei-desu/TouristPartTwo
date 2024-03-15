@@ -12,11 +12,11 @@ import java.util.List;
 
 @Repository
 public class AttractionDBRepository {
-    @Value("jdbc:mysql://firstsqlserver.mysql.database.azure.com:3306/attraction")
+    @Value("${spring.datasource.url}")
     private String db_url;
-    @Value("Juicer")
+    @Value("${spring.datasource.username}")
     private String user;
-    @Value("yuuZug4ii")
+    @Value("${spring.datasource.password}")
     private String pass;
 
     public List<Attraction> getAllAttractions(){
