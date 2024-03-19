@@ -12,6 +12,7 @@ import java.util.List;
 public class AttractionRepository {
     private List<Attraction> attractions;
 
+/*
     public AttractionRepository(){
         attractions = new ArrayList<>(List.of(
                 new Attraction("Zoo","They have pandas!", Location.COPENHAGEN.getName(),
@@ -28,7 +29,7 @@ public class AttractionRepository {
                                 Tag.MUSEUM.getName(),
                                 Tag.INDOORS.getName())),
 
-                new Attraction("Frederiksborg Slot","A fancy old palace with " +
+                    new Attraction("Frederiksborg Slot","A fancy old palace with " +
                         "a large garden",Location.HILLERØD.getName(),
                         List.of(
                                 Tag.ART.getName(),
@@ -60,6 +61,8 @@ public class AttractionRepository {
                                 Tag.INDOORS.getName()))
         ));
     }
+
+ */
 
     public List<Tag> getTags(){
         return new ArrayList<>(List.of(Tag.values()));
