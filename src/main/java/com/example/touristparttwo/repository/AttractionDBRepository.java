@@ -37,7 +37,7 @@ public class AttractionDBRepository {
                         resultSet.getString("a_description"),
                         resultSet.getString("city"),
                         new ArrayList<>(List.of(
-                                resultSet.getString("tag").split(",")))
+                                resultSet.getString("tags").split(",")))
                 ));
             }
         }
@@ -72,7 +72,7 @@ public class AttractionDBRepository {
                         resultSet.getString("a_description"),
                         resultSet.getString("city"),
                         new ArrayList<>(List.of(
-                                resultSet.getString("tag").split(",")))
+                                resultSet.getString("tags").split(",")))
                 );
             }
         }
@@ -86,7 +86,7 @@ public class AttractionDBRepository {
     public void addAttraction(Attraction attraction){
         try (Connection connection = DriverManager.getConnection(db_url,user,pass))
         {
-            String SQL = "INSERT INTO attraction(a_name,a_description,city) " +
+            String SQL = "INSERT INTO attraction(a_name,a_description,city_id) " +
                     "VALUES (?,?,?);";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setString(1,attraction.getName());
@@ -150,13 +150,13 @@ public class AttractionDBRepository {
     public void deleteAttractionByName(String name){
         try (Connection connection = DriverManager.getConnection(db_url,user,pass))
         {
-            String SQL = "DELETE FROM attraction WHERE a_id = ?;";
+            String SQL = "DELETE FROM attractiontags WHERE a_id = ?;";
             PreparedStatement ps = connection.prepareStatement(SQL);
             ps.setString(1,getAttractionNumberFromName(name));
 
             ps.executeUpdate();
 
-            SQL = "DELETE FROM attractiontags WHERE a_id = ?;";
+            SQL = "DELETE FROM attraction WHERE id = ?;";
             ps = connection.prepareStatement(SQL);
             ps.setString(1,getAttractionNumberFromName(name));
 

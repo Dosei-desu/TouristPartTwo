@@ -25,15 +25,15 @@
     <br>
     <select id="locations" th:field="*{location}" th:selected="${attraction.location}">
         <option th:each="value : ${locations}"
-                th:value="${value.name}"
-                th:text="${value.name}"/>
+                th:value="${value}"
+                th:text="${value}"/>
     </select>
     <br>
     <br>
     <label for="tags">Tags</label>
     <div th:each="value : ${tags}">
         <input id="tags" type="checkbox" th:field="*{tags}"
-               th:value="${value.name}" th:text="${value.name}">
+               th:value="${value}" th:text="${value}">
     </div>
     <br>
     <br>
