@@ -6,7 +6,7 @@ public class Attraction {
     private String name;
     private String description;
     private String location;
-    private String[] tags;
+    private List<String> tags;
 
     public Attraction (){
 
@@ -18,7 +18,7 @@ public class Attraction {
         this.location = location;
     }
 
-    public Attraction(String name, String description, String location, String[] tags) {
+    public Attraction(String name, String description, String location, List<String> tags) {
         this.name = name;
         this.description = description;
         this.location = location;
@@ -49,11 +49,11 @@ public class Attraction {
         this.location = location;
     }
 
-    public String[] getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 }

@@ -3,6 +3,7 @@ package com.example.touristparttwo.service;
 import com.example.touristparttwo.model.Attraction;
 import com.example.touristparttwo.model.Location;
 import com.example.touristparttwo.model.Tag;
+import com.example.touristparttwo.repository.AttractionDBRepository;
 import com.example.touristparttwo.repository.AttractionRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,14 +11,14 @@ import java.util.List;
 
 @Service
 public class AttractionService {
-    private final AttractionRepository attractionRepository;
+    private final AttractionDBRepository attractionRepository;
 
-    public AttractionService(AttractionRepository attractionRepository){
+    public AttractionService(AttractionDBRepository attractionRepository){
         this.attractionRepository = attractionRepository;
     }
 
     public List<Attraction> getAttractions() {
-        return attractionRepository.getAttractions();
+        return attractionRepository.getAllAttractions();
     }
 
     public Attraction getAttractionByName(String name){
@@ -36,19 +37,12 @@ public class AttractionService {
         attractionRepository.deleteAttractionByName(name);
     }
 
-    public void deleteAttraction(Attraction attraction){
-        attractionRepository.deleteAttraction(attraction);
-    }
-
-    public List<Tag> getTags(){
+    public List<String> getTags(){
         return attractionRepository.getTags();
     }
 
-    public List<String> getTagsName(){
-        return attractionRepository.getTagsName();
-    }
 
-    public List<Location> getLocations(){
+    public List<String> getLocations(){
         return attractionRepository.getLocations();
     }
 }

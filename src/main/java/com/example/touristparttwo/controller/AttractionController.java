@@ -42,8 +42,8 @@ public class AttractionController {
 
     @GetMapping("/add")
     public String createAttraction(Model model){
-        List<Location> locations = attractionService.getLocations();
-        List<Tag> tags = attractionService.getTags();
+        List<String> locations = attractionService.getLocations();
+        List<String> tags = attractionService.getTags();
         model.addAttribute("attraction",new Attraction());
         model.addAttribute("locations",locations);
         model.addAttribute("tags",tags);
@@ -59,8 +59,8 @@ public class AttractionController {
     @GetMapping("/{name}/update")
     public String updateById(@PathVariable String name, Model model){
         Attraction attraction = attractionService.getAttractionByName(name);
-        List<Location> locations = attractionService.getLocations();
-        List<Tag> tags = attractionService.getTags();
+        List<String> locations = attractionService.getLocations();
+        List<String> tags = attractionService.getTags();
         model.addAttribute("attraction",attraction);
         model.addAttribute("locations",locations);
         model.addAttribute("tags",tags);
